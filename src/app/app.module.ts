@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgToastModule } from 'ng-angular-popup';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AuthModule,
     MainModule,
     NoopAnimationsModule,
-   
+    NgToastModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

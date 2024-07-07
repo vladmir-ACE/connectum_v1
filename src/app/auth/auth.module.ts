@@ -6,6 +6,8 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MatIconModule } from '@angular/material/icon';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    MatIconModule 
+    MatIconModule ,
+    DialogModule,
+    FormsModule
   ]
 })
 export class AuthModule { }

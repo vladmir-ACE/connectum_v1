@@ -1,0 +1,1 @@
+export const role=JSON.parse(localStorage.getItem('role')!);
