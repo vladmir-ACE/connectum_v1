@@ -596,7 +596,7 @@
     class="uk-modal-dialog tt relative overflow-hidden mx-auto bg-white shadow-xl rounded-lg md:w-[520px] w-full dark:bg-dark2">
 
     <div class="text-center py-4 border-b mb-0 dark:border-slate-700">
-      <h2 class="text-sm font-medium text-black"> Veuillez Selectionner Le type de Publication </h2>
+      <h2 class="text-sm font-medium text-black"> Publication </h2>
       <!-- close button -->
       <button type="button" class="button-icon absolute top-0 right-0 m-2.5 uk-modal-close">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -612,188 +612,169 @@
       uk-scrollspy="target: > *; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
 
       <div *ngIf="step==1" class="grid grid-cols-2 gap-4 gap-y-7">
-        <div>
-          <div>
-            <label for="email" class="text text-center">AMICAL</label>
-            <a (click)="choix(1)"
-              [class]="selected1?'button bg-primary text-white w-full':'button bg-white text-white w-full'"><span>
-                <mat-icon style="color: black;"> diversity_3</mat-icon>
-              </span></a>
-          </div>
 
-          <!-- Last name -->
-          <div>
-            <label for="email" class="">PROFESSIONNEL</label>
-            <a (click)="choix(2)"
-              [class]="selected2?'button bg-primary text-white w-full':'button bg-white text-white w-full'"> <span>
-                <mat-icon style="color: black;"> work</mat-icon>
-              </span></a>
-          </div>
-
-          <!-- email -->
-          <div class="col-span-2">
-            <label for="email" class="">AMOUREUSE</label>
-            <a (click)="choix(3)"
-              [class]="selected3?'button bg-primary text-white w-full':'button bg-white text-white w-full'"><span>
-                <mat-icon style="color: black;"> diversity_1</mat-icon>
-              </span></a>
-          </div>
-
-          <!-- password -->
-
-          <div>
-            <button (click)="changeStep()" class="button bg-grey-100 text-center text-white w-full"> <span>
-                <mat-icon> arrow_back</mat-icon>
-              </span>précedent</button>
-          </div>
+        <div class="mx-auto">
+          <label for="amical" class="block text-center mb-2">AMICAL</label>
+          <a (click)="choix(1)"
+            [class]="selected1 ? 'button bg-green-500 text-white w-full' : 'button bg-white text-black border border-slate-200 w-full'">
+            <span class="flex justify-center items-center">
+              <mat-icon class="text-black">diversity_3</mat-icon>
+            </span>
+          </a>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-        <div class="pt-6">
-          <div>
-            <button (click)="changeStep()" type="" class=" button bg-primary text-white w-full">suivant <span>
-                <mat-icon> arrow_forward</mat-icon>
-              </span></button>
-          </div>
+        <div class="mx-auto">
+          <label for="professionnel" class="block text-center mb-2">PROFESSIONNEL</label>
+          <a (click)="choix(2)"
+            [class]="selected2 ? 'button bg-yellow-500 text-white w-full' : 'button bg-white text-black border border-slate-200 w-full'">
+            <span class="flex justify-center items-center">
+              <mat-icon class="text-black">work</mat-icon>
+            </span>
+          </a>
         </div>
 
+        <div class="col-span-2 mx-auto">
+          <label for="amoureuse" class="block text-center mb-2">AMOUREUSE</label>
+          <a (click)="choix(3)"
+            [class]="selected3 ? 'button bg-pink-600 text-white w-full' : 'button bg-white text-black border border-slate-200 w-full'">
+            <span class="flex justify-center items-center">
+              <mat-icon class="text-black">diversity_1</mat-icon>
+            </span>
+          </a>
+        </div>
 
+        <!-- Boutons suivant et précédant avec espacement -->
+        <div class="col-span-2 flex justify-center space-x-8 pt-6">
+          <button (click)="changeStep()" class="button bg-primary text-white w-100 max-w-xs mx-auto">
+            <span class="flex justify-center items-center">
+              <mat-icon>arrow_back</mat-icon>
+            </span>
+            précédent
+          </button>
 
-
+          <button (click)="changeStep()" class="button bg-primary text-white w-100 max-w-xs mx-auto">
+            suivant
+            <span class="flex justify-center items-center">
+              <mat-icon>arrow_forward</mat-icon>
+            </span>
+          </button>
+        </div>
       </div>
 
-      <div *ngIf="step==2" class="grid grid-cols-2 gap-4 gap-y-7">
+      <div *ngIf="step==2"
+        class=" tt relative overflow-hidden mx-auto bg-white  rounded-lg md:w-[620px] w-full dark:bg-dark2">
 
 
-        <div>
-
-          <div class="text-center py-4 border-b mb-0 dark:border-slate-700">
-            <h2 class="text-sm font-medium text-black"> Create Status </h2>
-
-            <!-- close button -->
-            <button type="button" class="button-icon absolute top-0 right-0 m-2.5 uk-modal-close">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-          </div>
-
-          <div class="space-y-5 mt-3 p-2">
-            <textarea
-              class="w-full !text-black placeholder:!text-black !bg-white !border-transparent focus:!border-transparent focus:!ring-transparent !font-normal !text-xl   dark:!text-white dark:placeholder:!text-white dark:!bg-slate-800"
-              name="" id="" rows="6" placeholder="What do you have in mind?"></textarea>
-          </div>
-
-          <div class="flex items-center gap-2 text-sm py-2 px-4 font-medium flex-wrap">
-            <button type="button"
-              class="flex items-center gap-1.5 bg-sky-50 text-sky-600 rounded-full py-1 px-2 border-2 border-sky-100 dark:bg-sky-950 dark:border-sky-900">
-              <span class="material-icons ">image</span> <!-- Taille réduite ici -->
-              Image
-            </button>
-            <button type="button"
-              class="flex items-center gap-1.5 bg-teal-50 text-teal-600 rounded-full py-1 px-2 border-2 border-teal-100 dark:bg-teal-950 dark:border-teal-900">
-              <mat-icon>videocam</mat-icon>
-              Video
-            </button>
-            <button type="button"
-              class="flex items-center gap-1.5 bg-orange-50 text-orange-600 rounded-full py-1 px-2 border-2 border-orange-100 dark:bg-yellow-950 dark:border-yellow-900">
-              <mat-icon>mood</mat-icon>
-              Feeling
-            </button>
-            <button type="button"
-              class="flex items-center gap-1.5 bg-red-50 text-red-600 rounded-full py-1 px-2 border-2 border-rose-100 dark:bg-rose-950 dark:border-rose-900">
-              <mat-icon>location_on</mat-icon>
-              Check in
-            </button>
-            <button type="button" class="grid place-items-center w-8 h-8 text-xl rounded-full bg-secondery">
-              <mat-icon>more_horiz</mat-icon> <!-- Pour une icône horizontale -->
-            </button>
-          </div>
-
-          <div class="p-5 flex justify-between items-center">
-            <div>
-              <button
-                class="inline-flex items-center py-1 px-2.5 gap-1 font-medium text-sm rounded-full bg-slate-50 border-2 border-slate-100 group aria-expanded:bg-slate-100 aria-expanded: dark:text-white dark:bg-slate-700 dark:border-slate-600"
-                type="button">
-                Everyone
-                <mat-icon class="text-base duration-500 group-aria-expanded:rotate-180">expand_more</mat-icon>
-              </button>
-
-              <div
-                class="p-2 bg-white rounded-lg shadow-lg text-black font-medium border border-slate-100 w-60 dark:bg-slate-700"
-                uk-drop="offset:10;pos: bottom-left; reveal-left;animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left ; mode:click">
-
-                <form>
-                  <label>
-                    <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" checked />
-                    <div
-                      class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                      <div class="text-sm"> Everyone </div>
-                      <mat-icon name="checkmark-circle"
-                        class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                      </mat-icon>
-                    </div>
-                  </label>
-                  <label>
-                    <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" />
-                    <div
-                      class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                      <div class="text-sm"> Friends </div>
-                      <mat-icon name="checkmark-circle"
-                        class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                      </mat-icon>
-                    </div>
-                  </label>
-                  <label>
-                    <input type="radio" name="radio-status" id="monthly" class="peer appearance-none hidden" />
-                    <div
-                      class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                      <div class="text-sm"> Only me </div>
-                      <mat-icon name="checkmark-circle"
-                        class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                      </mat-icon>
-                    </div>
-                  </label>
-                </form>
-
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <button type="button" class="button bg-blue-500 text-white py-2 px-12 text-[14px]"> Create</button>
-            </div>
-          </div>
-
-        </div>
-
-
-        <div>
-          <button (click)="changeStep()" class="button bg-grey-100 text-center text-white w-full"> <span>
-              <mat-icon> arrow_back</mat-icon>
-            </span>précedent</button>
+        <div class="space-y-5 mt-3 p-2">
+          <textarea
+            class="w-full !text-black placeholder:!text-black !bg-white !border-transparent focus:!border-transparent focus:!ring-transparent !font-normal !text-xl   dark:!text-white dark:placeholder:!text-white dark:!bg-slate-800"
+            name="" id="" rows="6" placeholder="What do you have in mind?"></textarea>
         </div>
 
 
 
+        <div class="flex items-center gap-2 text-sm py-2 px-4 font-medium flex-wrap">
+          <button type="button"
+            class="flex items-center gap-1.5 bg-sky-50 text-sky-600 rounded-full py-1 px-2 border-2 border-sky-100 dark:bg-sky-950 dark:border-sky-900">
+            <span class="material-icons ">image</span> <!-- Taille réduite ici -->
+            Image
+          </button>
+          <button type="button"
+            class="flex items-center gap-1.5 bg-teal-50 text-teal-600 rounded-full py-1 px-2 border-2 border-teal-100 dark:bg-teal-950 dark:border-teal-900">
+            <mat-icon>videocam</mat-icon>
+            Video
+          </button>
+          <button type="button"
+            class="flex items-center gap-1.5 bg-orange-50 text-orange-600 rounded-full py-1 px-2 border-2 border-orange-100 dark:bg-yellow-950 dark:border-yellow-900">
+            <mat-icon>mood</mat-icon>
+            Feeling
+          </button>
+          <button type="button"
+            class="flex items-center gap-1.5 bg-red-50 text-red-600 rounded-full py-1 px-2 border-2 border-rose-100 dark:bg-rose-950 dark:border-rose-900">
+            <mat-icon>location_on</mat-icon>
+            Check in
+          </button>
+          <button type="button" class="grid place-items-center w-8 h-8 text-xl rounded-full bg-secondery">
+            <mat-icon>more_horiz</mat-icon> <!-- Pour une icône horizontale -->
+          </button>
+        </div>
 
-        <!-- submit button -->
+        <div class="p-5 flex justify-between items-center">
+          <div>
+            <button (click)="changeStep()" class="button bg-primary text-white w-100 max-w-xs mx-auto">
+              <span class="flex justify-center items-center">
+                <mat-icon>arrow_back</mat-icon>
+              </span>
+              précédent
+            </button>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center py-1 px-2.5 gap-1 font-medium text-sm rounded-full bg-slate-50 border-2 border-slate-100 group aria-expanded:bg-slate-100 aria-expanded: dark:text-white dark:bg-slate-700 dark:border-slate-600"
+              type="button">
+              Everyone
+              <mat-icon class="text-base duration-500 group-aria-expanded:rotate-180">expand_more</mat-icon>
+            </button>
 
+            <div
+              class="p-2 bg-white rounded-lg shadow-lg text-black font-medium border border-slate-100 w-60 dark:bg-slate-700"
+              uk-drop="offset:10;pos: bottom-left; reveal-left;animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left ; mode:click">
+
+              <form>
+                <label>
+                  <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" checked />
+                  <div
+                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
+                    <div class="text-sm"> Everyone </div>
+                    <mat-icon name="checkmark-circle"
+                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
+                    </mat-icon>
+                  </div>
+                </label>
+                <label>
+                  <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" />
+                  <div
+                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
+                    <div class="text-sm"> Friends </div>
+                    <mat-icon name="checkmark-circle"
+                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
+                    </mat-icon>
+                  </div>
+                </label>
+                <label>
+                  <input type="radio" name="radio-status" id="monthly" class="peer appearance-none hidden" />
+                  <div
+                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
+                    <div class="text-sm"> Only me </div>
+                    <mat-icon name="checkmark-circle"
+                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
+                    </mat-icon>
+                  </div>
+                </label>
+              </form>
+
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" class="button bg-blue-500 text-white py-2 px-12 text-[14px]"> Publier</button>
+          </div>
+        </div>
+       
 
       </div>
 
 
-      <!-- social login -->
+
+      <div>
+
+      </div>
+
+
+
+
+
+      <!-- submit button -->
+
 
 
     </form>
@@ -802,7 +783,7 @@
 
 
 
-    <div class="p-5 flex justify-between items-center">
+    <!-- <div class="p-5 flex justify-between items-center">
       <div>
         <div
           class="p-2 bg-white rounded-lg shadow-lg text-black font-medium border border-slate-100 w-60 dark:bg-slate-700"
@@ -812,7 +793,7 @@
       <div class="flex items-center gap-2">
         <button type="button" class="button bg-blue-500 text-white py-2 px-12 text-[14px]"> Create</button>
       </div>
-    </div>
+    </div> -->
 
   </div>
 
