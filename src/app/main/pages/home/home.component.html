@@ -18,7 +18,7 @@
                             <li class="md:pr-3" uk-scrollspy-class="uk-animation-fade">
                                 <div class="md:w-16 md:h-16 w-12 h-12 rounded-full relative border-2 border-dashed grid place-items-center bg-slate-200 border-slate-300 dark:border-slate-700 dark:bg-dark2 shrink-0"
                                      uk-toggle="target: #create-story">
-                                    <mat-icon name="camera" class="text-2xl"></mat-icon>
+                                     <mat-icon class="text-2xl">camera_alt</mat-icon>
                                 </div>
                             </li>
                             <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
@@ -99,11 +99,17 @@
                     </div>
                 
                     <div class="max-md:hidden">
-
-                        <button type="button" class="absolute -translate-y-1/2 bg-white shadow rounded-full top-1/2 -left-3.5 grid w-8 h-8 place-items-center dark:bg-dark3" uk-slider-item="previous"> <mat-icon name="chevron-back" class="text-2xl"></mat-icon></button>
-                        <button type="button" class="absolute -right-2 -translate-y-1/2 bg-white shadow rounded-full top-1/2 grid w-8 h-8 place-items-center dark:bg-dark3" uk-slider-item="next"> <mat-icon name="chevron-forward" class="text-2xl"></mat-icon> </button>
-
-                    </div>
+                        <button type="button"
+                          class="absolute -translate-y-1/2 bg-white shadow rounded-full top-1/2 -left-3.5 grid w-8 h-8 place-items-center dark:bg-dark3"
+                          uk-slider-item="previous">
+                          <mat-icon class="text-2xl">chevron_left</mat-icon>
+                        </button>
+                        <button type="button"
+                          class="absolute -right-2 -translate-y-1/2 bg-white shadow rounded-full top-1/2 grid w-8 h-8 place-items-center dark:bg-dark3"
+                          uk-slider-item="next">
+                          <mat-icon class="text-2xl">chevron_right</mat-icon>
+                        </button>
+                      </div>
 
 
                 </div>
@@ -152,7 +158,9 @@
                         </div>
 
                         <div class="-mr-1">
-                            <button type="button" class="button-icon w-8 h-8"> <mat-icon class="text-xl" name="ellipsis-horizontal"></mat-icon> </button>
+                            <button type="button" class="button-icon w-8 h-8">
+                                <span class="material-icons text-xl">more_horiz</span>
+                            </button>
                             <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
                                 <nav> 
                                     <a href="#"> <mat-icon class="text-xl shrink-0" name="bookmark-outline"></mat-icon>  Add to favorites </a>  
