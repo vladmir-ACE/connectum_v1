@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MessageComponent } from './pages/message/message.component';
 import { PublicationComponent } from './pages/publication/publication.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { AmisComponent } from './pages/amis/amis.component';
 
 const routes: Routes = [
   {path:'',component:MainComponent,
@@ -13,6 +14,7 @@ const routes: Routes = [
        {path:'home',component:HomeComponent},
        {path:'message',component: MessageComponent},
        {path:'publication',component:PublicationComponent},
+       {path:'amis',component:AmisComponent},
        {path:'setting',component:SettingsComponent},
       
     ]},
