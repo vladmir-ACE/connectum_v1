@@ -12,6 +12,7 @@ import { PublicationComponent } from './pages/publication/publication.component'
 import { SettingsComponent } from './pages/settings/settings.component';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
+import { AmisComponent } from './pages/amis/amis.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DialogModule } from 'primeng/dialog';
     HeaderComponent,
     MessageComponent,
     PublicationComponent,
-    SettingsComponent
+    SettingsComponent,
+    AmisComponent
   ],
   imports: [
     CommonModule,
