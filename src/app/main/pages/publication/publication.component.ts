@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { currentUser } from 'src/app/environement/global';
+import { AmiService } from 'src/app/services/ami_service';
 import { PubService } from 'src/app/services/publi_services';
 import Swal from 'sweetalert2';
 
@@ -20,6 +21,8 @@ export class PublicationComponent implements OnInit {
     text:any={
       message:""
     };
+    listAmis:any=[];
+    reseaux:any=[];
 
     @ViewChild('fileInput') fileInput: any;
 
@@ -30,11 +33,18 @@ export class PublicationComponent implements OnInit {
     selected2:boolean=false;
     selected3:boolean=false;
 
-    constructor(private pubService:PubService,private toastService:NgToastService){
+    constructor(private amibService:AmiService,private pubService:PubService,private toastService:NgToastService){
     }
 
     ngOnInit(): void {
       this.getPub();
+      this.load();
+    }
+
+    load(){
+      this.reseaux=currentUser.reseaux;
+      this.getAmis();
+      
     }
   
     changeStep(){
@@ -145,6 +155,8 @@ export class PublicationComponent implements OnInit {
       confirmButton: 'order-2',
       denyButton: 'order-3',
       },
+      background: '#333', // Background color for dark mode
+      color:'#fff'
       }).then((result) => {
       if (result.isConfirmed) {
         // delete operation
@@ -175,6 +187,19 @@ export class PublicationComponent implements OnInit {
 
    }
 
+
+   getAmis(){
+    this.amibService.getAmi().subscribe(
+      (res:any)=>{
+        console.log(res);
+        this.listAmis=res;
+      },
+      (err:any)=>{
+        console.log(err);
+        this.toastService.error({detail:"erreur",summary:"Une erreur est survenu ",duration:3000});
+      }
+    );
+  }
 
 
 }

@@ -19,29 +19,30 @@ export class AmiService {
 
 
      //add 
-    add(data:any){
-        return this.http.post<any>(api.url+"api/v1/publication",data,{headers :this.header});
+    send_demande(data:any){
+        return this.http.post<any>(api.url+"api/v1/demandeAmi/envoyer",data,{headers :this.header});
+    };
+
+    accepter_demande(data:any){
+        return this.http.post<any>(api.url+"api/v1/demandeAmi/accepter",data,{headers :this.header});
     };
 
     get(){
-        return this.http.get<any>(api.url+"avis/listeUtilisateurs",{headers :this.header});
+        return this.http.get<any>(api.url+"avis/listeDemandeAmiPossible",{headers :this.header});
     }
 
-    getBySecteur(name:string){
-        return this.http.get<any>(api.url+"api/v1/publication/getPublicationBy/"+name,{headers :this.header});
+    getAmi(){
+        return this.http.get<any>(api.url+"api/v1/demandeAmi/listeAmis",{headers :this.header});
     }
 
-    update(data:any,id:number){
-        return this.http.put<any>(api.url+"api/v1/publication/"+id,data,{headers :this.header});
+    getDemandeRecus(){
+        return this.http.get<any>(api.url+"api/v1/demandeAmi/listeAmieRecue",{headers :this.header});
     }
 
-    delete(id:number){
-        return this.http.delete<any>(api.url+"api/v1/publication/"+id,{headers :this.header});
+    deleteAmi(email:string){
+        return this.http.delete<any>(api.url+"api/v1/demandeAmi/supprimerAmi/"+email,{headers :this.header});
     }
 
-    // changeMdp(data:any){
-    //     return this.http.post<any>(api.url+"nouveau-mot-de-passe",data,{headers :this.header});
-    // }
     
 
 }

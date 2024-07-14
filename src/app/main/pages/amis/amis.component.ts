@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { AmiService } from 'src/app/services/ami_service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-amis',
@@ -12,13 +13,25 @@ export class AmisComponent implements OnInit {
 
   ListeUser:any[]=[];
 
+  ListOfDemande:any[]=[];
+  ListAmis:any[]=[];
+
 
 
   constructor(private amibService:AmiService,private toastService:NgToastService){
   }
   ngOnInit(): void {
-    this.getUsers();
+    this.load();
   }
+
+
+  load(){
+    this.getUsers();
+    this.getAmis();
+    this.getDemande();
+  }
+
+
 
   getUsers(){
     this.amibService.get().subscribe(
@@ -33,5 +46,99 @@ export class AmisComponent implements OnInit {
     );
 
   }
+
+  getDemande(){
+
+    this.amibService.getDemandeRecus().subscribe(
+      (res:any)=>{
+        console.log(res);
+        this.ListOfDemande=res;
+      },
+      (err:any)=>{
+        console.log(err);
+        this.toastService.error({detail:"erreur",summary:"Une erreur est survenu ",duration:3000});
+      }
+    );
+  }
+
+  getAmis(){
+    this.amibService.getAmi().subscribe(
+      (res:any)=>{
+        console.log(res);
+        this.ListAmis=res;
+      },
+      (err:any)=>{
+        console.log(err);
+        this.toastService.error({detail:"erreur",summary:"Une erreur est survenu ",duration:3000});
+      }
+    );
+
+  }
+
+  send_demande(email:string){
+    console.log(email);
+    this.amibService.send_demande({email:email}).subscribe(
+      (res:any)=>{
+        console.log(res);
+        this.toastService.success({detail:"success",summary:"Demande envoyé",duration:3000});
+        this.load();
+      },
+      (err:any)=>{
+        console.log(err);
+        this.toastService.error({detail:"erreur",summary:"Une erreur est survenu ",duration:3000});
+      },
+    );
+  };
+
+  accepter_demande(id:number){
+    this.amibService.accepter_demande({demandeId:id}).subscribe(
+      (res:any)=>{
+        console.log(res);
+        this.toastService.success({detail:"success",summary:"Demande accepté",duration:3000});
+        this.load();
+      },
+      (err:any)=>{
+        console.log(err);
+        this.toastService.error({detail:"erreur",summary:"Une erreur est survenu ",duration:3000});
+      },
+    );
+
+  }
+
+  deleteAmi(email:string){
+    Swal.fire({
+      text:'Voulez vous vraiment suprimer cet amis ? !!',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText:"Non",
+      confirmButtonText: 'Oui',
+      customClass: {
+      actions: 'my-actions',
+      cancelButton: 'order-1 right-gap',
+      confirmButton: 'order-2',
+      denyButton: 'order-3',
+      },
+      background: '#333', // Background color for dark mode
+      color:'#fff'
+      }).then((result) => {
+      if (result.isConfirmed) {
+        // delete operation
+        this.amibService.deleteAmi(email).subscribe(
+          (res:any)=>{
+            console.log(res);
+            this.toastService.success({detail:"success",summary:"Amis supprimé",duration:3000});
+            this.load();
+          },
+          (err:any)=>{
+            console.log(err);
+            this.toastService.error({detail:"erreur",summary:"Une erreur est survenu ",duration:3000});
+          },
+        );
+        
+      }})
+  }
+
+
+
 
 }
