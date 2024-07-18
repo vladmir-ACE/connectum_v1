@@ -74,10 +74,9 @@
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-1.5">
                     <div class="mr-auto text-sm text-black dark:text-white font-medium">{{item.nom}} {{item.prenom}}</div>
-                    <div class="text-xs font-light text-gray-500 dark:text-white/70">09:40AM</div>
+                    
                   </div>
-                  <div class="font-medium overflow-hidden text-ellipsis text-sm whitespace-nowrap">Love your photos 😍
-                  </div>
+                  
                 </div>
               </a>
             </div>
@@ -129,7 +128,8 @@
                 <div class="text-gray-500 text-sm   dark:text-white/80"> {{selected_ami.email}} </div>
               </div>
               <div class="mt-3.5">
-                <a href="timeline.html"
+                <a role="button"
+                  (click)="voirProfile()"
                   class="inline-block rounded-lg px-4 py-1.5 text-sm font-semibold bg-secondery">View profile</a>
               </div>
             </div>
@@ -376,5 +376,90 @@
     </div>
 
   </main>
+
+  
+<p-dialog header="Profil" [(visible)]="showProfile" [style]="{width:'50vw'}"   *ngIf="selected_user" >
+    
+  <div class="tt relative overflow-hidden mx-auto bg-white   md:w-[1000px] w-full ">
+      <!-- photo de profil -->
+      <div class="flex md:gap-8 gap-4 items-center md:p-8 p-6 md:pb-4">
+        <div class="relative md:w-20 md:h-20 w-12 h-12 shrink-0">
+          <label for="file" class="cursor-pointer">
+            <img id="img" [src]="selected_user.profilePictureUrl ? selected_user.profilePictureUrl : 'assets/images/avatars/avatar-3.jpg'" class="object-cover w-full h-full rounded-full" alt="" />
+          </label>
+        </div>
+  
+        <div class="flex-1">
+          <p>{{selected_user.nom}}  {{selected_user.prenom}}</p>
+        </div>
+      </div>
+      <!--Fin photo de profil -->
+  
+      <!-- form profil -->
+      <div class="flex justify-center">
+        <!-- Centrer le contenu horizontalement -->
+        <div class="w-full max-w-md">
+          <!-- Limiter la largeur pour éviter de toucher les bords -->
+          <div class="space-y-6">
+           
+  
+            <div class="flex items-center gap-4">
+              <label class="w-32 text-right"> Email </label>
+              <div class="flex-1">
+                <input type="text"  style="background-color:rgb(179, 182, 182);" [(ngModel)]="selected_user.email" class="w-full px-3 py-2 border rounded-lg " readonly>
+              </div>
+            </div>
+  
+            <div class="flex items-start gap-4">
+              <label class="w-32 text-right"> Biographie </label>
+              <div class="flex-1">
+                <textarea class="w-full px-3 py-2 border rounded-lg" style="background-color:rgb(179, 182, 182);" rows="5" [(ngModel)]="selected_user.experience" readonly></textarea>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <label class="md:w-32 text-right">Relation </label>
+              <div class="flex pl-6 items-center gap-4 flex-1">
+                  <a role="button"                          
+                   *ngIf="selected_user.reseaux.includes('AMICAL')" [class]="selected_user.reseaux.includes('AMICAL')?'button lg:px-6 bg-green-500 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMICAL</a>
+              </div>
+              <div class="flex pl-2 items-center gap-4 flex-1">
+                  <a 
+                  role="button"
+                  *ngIf="selected_user.reseaux.includes('PROFESSIONEL')"                             
+                  [class]="selected_user.reseaux.includes('PROFESSIONEL')?'button lg:px-6 bg-yellow-500 max-md:flex-1':'button lg:px-6 bg-yellow-500 max-md:flex-1'">PROFESSIONEL</a>
+              </div>
+              <div class="flex pl-2 items-center gap-4 flex-1">
+                  <a 
+                  role="button"
+                  *ngIf="selected_user.reseaux.includes('AMOUREUSE')"                     
+                  [class]="selected_user.reseaux.includes('AMOUREUSE')?'button lg:px-6 bg-pink-600 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMOUREUSE</a>
+              </div>
+          </div>
+  
+            <div class="flex items-center gap-4 mb-4">
+              <label class="w-32 text-right"> sexe </label>
+              <input type="text" [(ngModel)]="selected_user.sexe" style="background-color:rgb(179, 182, 182);" class="w-full px-3 py-2 border rounded-lg" readonly>
+            </div>
+
+            <div class="flex items-center gap-4 mb-4">
+              <label class="w-32 text-right"> statut </label>
+              <input type="text" [(ngModel)]="selected_user.statusMatri" style="background-color:rgb(179, 182, 182);" class="w-full px-3 py-2 border rounded-lg" readonly>
+            </div>
+  
+            <div class="flex items-center gap-4 mb-8"> <!-- Ajout de mb-4 ici -->
+              <label class="w-32 text-right">Naissance </label>
+              <div class="flex-1">
+                <input type="date" [(ngModel)]="selected_user.date_de_naissance" style="background-color:rgb(179, 182, 182);"  class="w-full px-3 py-2 border rounded-lg" readonly>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 mb-8" > <!-- Ajout de mb-4 ici -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin form profil -->
+  </div>
+</p-dialog>
+
 
 </div>

@@ -75,24 +75,24 @@
 
                             <div class="md:flex items-center gap-2">
                                 <div class="flex pl-6 items-center gap-4 flex-1">
-                                    <label class="md:w-32 text-right">Nom</label>
+                                    <label class="md:w-32 text-right text-white">Nom</label>
                                     <input [(ngModel)]="current_user.nom" name="nom" type="text"  class="lg:w-1/2 w-full">
                                 </div>
                                 <div class="flex pl-2 items-center gap-4 flex-1">
-                                    <label class="md:w-32 text-right">Prenom</label>
+                                    <label class="md:w-32  text-white text-right">Prenom</label>
                                     <input  [(ngModel)]="current_user.prenom" name="prenom" type="text"  class="lg:w-1/2 w-full">
                                 </div>
                             </div>
                                                       
                             <div class="md:flex items-center gap-10">
-                                <label class="md:w-32 text-right"> Naissacnce </label>
+                                <label class="md:w-32  text-white text-right"> Naissacnce </label>
                                 <div class="flex-1 max-md:mt-4">
                                     <input [(ngModel)]="current_user.date_de_naissance" name="date_de_naissance"  type="date"  class="w-full">
                                 </div>
                             </div> 
 
                             <div class="md:flex items-center gap-10">
-                                <label class="md:w-32 text-right"> Sexe </label>
+                                <label class="md:w-32 text-white text-right"> Sexe </label>
                                 <div class="flex-1 max-md:mt-4">
                                     <select [(ngModel)]="current_user.sexe" name="sexe" class="!border-0 !rounded-md lg:w-1/2 w-full">
                                         <option value="MASCULIN">MASCULIN</option>
@@ -103,7 +103,7 @@
 
                             <div class="md:flex items-center gap-2">
                                 <div class="flex pl-6 items-center gap-4 flex-1">
-                                    <label class="md:w-32 text-right">Relation</label>
+                                    <label class="md:w-32 text-white text-right">Relation</label>
                                     <a role="button" (click)="toggleRelation('AMICAL')"                           
                                      [class]="current_user.reseaux.includes('AMICAL')?'button lg:px-6 bg-primary max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMICAL</a>
                                 </div>
@@ -122,14 +122,14 @@
                             </div>
     
                             <div class="md:flex items-start gap-10">
-                                <label class="md:w-32 text-right"> Bio </label>
+                                <label class="md:w-32 text-white text-right"> Bio </label>
                                 <div class="flex-1 max-md:mt-4">
                                     <textarea  [(ngModel)]="current_user.experience" name="experience" class="w-full" rows="5" placeholder="entrez votre Biographie"></textarea>
                                 </div>
                             </div> 
                             
                             <div class="md:flex items-center gap-10">
-                                <label class="md:w-32 text-right"> Etat Matrimonial </label>
+                                <label class="md:w-32 text-white text-right"> Etat Matrimonial </label>
                                 <div class="flex-1 max-md:mt-4">
                                     <select [(ngModel)]="current_user.statusMatri" name="statusMatri" class="!border-0 !rounded-md lg:w-1/2 w-full">
                                         <option value="CELIBATAIRE">CELIBATAIRE</option>

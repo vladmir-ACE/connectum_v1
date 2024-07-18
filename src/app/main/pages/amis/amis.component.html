@@ -56,8 +56,8 @@
                   
 
                         <!-- load more -->
-                        <div class="flex justify-center my-6 lg:col-span-3 col-span-2">
-                            <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Load more...</button>
+                        <div class="flex justify-center my-6 lg:col-span-3 col-span-2" *ngIf="!ListeUser || ListeUser.length === 0">
+                            <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Acune proposition</button>
                             
                         </div>
 
@@ -83,20 +83,20 @@
                                         </svg>
                                         delete
                                     </button>
-                                    <button type="button" class="button bg-primary-soft text-primary dark:text-white">
+                                    <a role="button" routerLink="/main/message" class="button bg-primary-soft text-primary dark:text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                             <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0112 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 01-3.476.383.39.39 0 00-.297.17l-2.755 4.133a.75.75 0 01-1.248 0l-2.755-4.133a.39.39 0 00-.297-.17 48.9 48.9 0 01-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97zM6.75 8.25a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H7.5z" clip-rule="evenodd" />
                                         </svg>
                                         Message
-                                    </button>
+                                      </a>
                                 </div>
                             </div>
                         </div>
                       
 
                         <!-- load more -->
-                        <div class="flex justify-center my-6 sm:col-span-2">
-                            <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Load more...</button>
+                        <div class="flex justify-center my-6 sm:col-span-2"  *ngIf="!ListAmis || ListAmis.length === 0">
+                            <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Aucun amis.</button>
                         </div>
 
                     </div>
@@ -124,8 +124,8 @@
                         </div>
                         
                         <!-- load more -->
-                        <div class="flex justify-center my-6 lg:col-span-3 col-span-2">
-                            <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Load more...</button>
+                        <div class="flex justify-center my-6 lg:col-span-3 col-span-2"  *ngIf="!ListOfDemande || ListOfDemande.length === 0">
+                            <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Aucune demande</button>
                         </div>
 
                     
@@ -224,79 +224,84 @@
 
 <p-dialog header="Profil" [(visible)]="showProfile" [style]="{width:'50vw'}"   *ngIf="selected_user" >
     
-    <div class="tt relative overflow-hidden mx-auto bg-white   md:w-[1000px] w-full ">
-        <!-- photo de profil -->
-        <div class="flex md:gap-8 gap-4 items-center md:p-8 p-6 md:pb-4">
-          <div class="relative md:w-20 md:h-20 w-12 h-12 shrink-0">
-            <label for="file" class="cursor-pointer">
-              <img id="img" [src]="selected_user.profilePictureUrl ? selected_user.profilePictureUrl : 'assets/images/avatars/avatar-3.jpg'" class="object-cover w-full h-full rounded-full" alt="" />
-            </label>
-          </div>
-    
-          <div class="flex-1">
-            <p>{{selected_user.nom}}  {{selected_user.prenom}}</p>
-          </div>
+  <div class="tt relative overflow-hidden mx-auto bg-white   md:w-[1000px] w-full ">
+      <!-- photo de profil -->
+      <div class="flex md:gap-8 gap-4 items-center md:p-8 p-6 md:pb-4">
+        <div class="relative md:w-20 md:h-20 w-12 h-12 shrink-0">
+          <label for="file" class="cursor-pointer">
+            <img id="img" [src]="selected_user.profilePictureUrl ? selected_user.profilePictureUrl : 'assets/images/avatars/avatar-3.jpg'" class="object-cover w-full h-full rounded-full" alt="" />
+          </label>
         </div>
-        <!--Fin photo de profil -->
-    
-        <!-- form profil -->
-        <div class="flex justify-center">
-          <!-- Centrer le contenu horizontalement -->
-          <div class="w-full max-w-md">
-            <!-- Limiter la largeur pour éviter de toucher les bords -->
-            <div class="space-y-6">
-             
-    
-              <div class="flex items-center gap-4">
-                <label class="w-32 text-right"> Email </label>
-                <div class="flex-1">
-                  <input type="text" [(ngModel)]="selected_user.email" class="w-full px-3 py-2 border rounded-lg" readonly>
-                </div>
-              </div>
-    
-              <div class="flex items-start gap-4">
-                <label class="w-32 text-right"> Biographie </label>
-                <div class="flex-1">
-                  <textarea class="w-full px-3 py-2 border rounded-lg" rows="5" [(ngModel)]="selected_user.experience" readonly></textarea>
-                </div>
-              </div>
-              <div class="flex items-start gap-4">
-                <label class="md:w-32 text-right">Relation recherché </label>
-                <div class="flex pl-6 items-center gap-4 flex-1">
-                    <a role="button"                          
-                     *ngIf="selected_user.reseaux.includes('AMICAL')" [class]="selected_user.reseaux.includes('AMICAL')?'button lg:px-6 bg-green-500 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMICAL</a>
-                </div>
-                <div class="flex pl-2 items-center gap-4 flex-1">
-                    <a 
-                    role="button"
-                    *ngIf="selected_user.reseaux.includes('PROFESSIONEL')"                             
-                    [class]="selected_user.reseaux.includes('PROFESSIONEL')?'button lg:px-6 bg-yellow-500 max-md:flex-1':'button lg:px-6 bg-yellow-500 max-md:flex-1'">PROFESSIONEL</a>
-                </div>
-                <div class="flex pl-2 items-center gap-4 flex-1">
-                    <a 
-                    role="button"
-                    *ngIf="selected_user.reseaux.includes('AMOUREUSE')"                     
-                    [class]="selected_user.reseaux.includes('AMOUREUSE')?'button lg:px-6 bg-pink-600 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMOUREUSE</a>
-                </div>
-            </div>
-    
-              <div class="flex items-center gap-4 mb-4">
-                <label class="w-32 text-right"> sexe </label>
-                <input type="text" [(ngModel)]="selected_user.sexe" class="w-full px-3 py-2 border rounded-lg" readonly>
-              </div>
-    
-              <div class="flex items-center gap-4 mb-8"> <!-- Ajout de mb-4 ici -->
-                <label class="w-32 text-right"> Date de naissance </label>
-                <div class="flex-1">
-                  <input type="date" [(ngModel)]="selected_user.date_de_naissance" class="w-full px-3 py-2 border rounded-lg" readonly>
-                </div>
-              </div>
-              <div class="flex items-center gap-4 mb-8" > <!-- Ajout de mb-4 ici -->
+  
+        <div class="flex-1">
+          <p>{{selected_user.nom}}  {{selected_user.prenom}}</p>
+        </div>
+      </div>
+      <!--Fin photo de profil -->
+  
+      <!-- form profil -->
+      <div class="flex justify-center">
+        <!-- Centrer le contenu horizontalement -->
+        <div class="w-full max-w-md">
+          <!-- Limiter la largeur pour éviter de toucher les bords -->
+          <div class="space-y-6">
+           
+  
+            <div class="flex items-center gap-4">
+              <label class="w-32 text-right"> Email </label>
+              <div class="flex-1">
+                <input type="text"  style="background-color:rgb(179, 182, 182);" [(ngModel)]="selected_user.email" class="w-full px-3 py-2 border rounded-lg " readonly>
               </div>
             </div>
+  
+            <div class="flex items-start gap-4">
+              <label class="w-32 text-right"> Biographie </label>
+              <div class="flex-1">
+                <textarea class="w-full px-3 py-2 border rounded-lg" style="background-color:rgb(179, 182, 182);" rows="5" [(ngModel)]="selected_user.experience" readonly></textarea>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <label class="md:w-32 text-right">Relation </label>
+              <div class="flex pl-6 items-center gap-4 flex-1">
+                  <a role="button"                          
+                   *ngIf="selected_user.reseaux.includes('AMICAL')" [class]="selected_user.reseaux.includes('AMICAL')?'button lg:px-6 bg-green-500 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMICAL</a>
+              </div>
+              <div class="flex pl-2 items-center gap-4 flex-1">
+                  <a 
+                  role="button"
+                  *ngIf="selected_user.reseaux.includes('PROFESSIONEL')"                             
+                  [class]="selected_user.reseaux.includes('PROFESSIONEL')?'button lg:px-6 bg-yellow-500 max-md:flex-1':'button lg:px-6 bg-yellow-500 max-md:flex-1'">PROFESSIONEL</a>
+              </div>
+              <div class="flex pl-2 items-center gap-4 flex-1">
+                  <a 
+                  role="button"
+                  *ngIf="selected_user.reseaux.includes('AMOUREUSE')"                     
+                  [class]="selected_user.reseaux.includes('AMOUREUSE')?'button lg:px-6 bg-pink-600 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMOUREUSE</a>
+              </div>
+          </div>
+  
+            <div class="flex items-center gap-4 mb-4">
+              <label class="w-32 text-right"> sexe </label>
+              <input type="text" [(ngModel)]="selected_user.sexe" style="background-color:rgb(179, 182, 182);" class="w-full px-3 py-2 border rounded-lg" readonly>
+            </div>
+
+            <div class="flex items-center gap-4 mb-4">
+              <label class="w-32 text-right"> statut </label>
+              <input type="text" [(ngModel)]="selected_user.statusMatri" style="background-color:rgb(179, 182, 182);" class="w-full px-3 py-2 border rounded-lg" readonly>
+            </div>
+  
+            <div class="flex items-center gap-4 mb-8"> <!-- Ajout de mb-4 ici -->
+              <label class="w-32 text-right">Naissance </label>
+              <div class="flex-1">
+                <input type="date" [(ngModel)]="selected_user.date_de_naissance" style="background-color:rgb(179, 182, 182);"  class="w-full px-3 py-2 border rounded-lg" readonly>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 mb-8" > <!-- Ajout de mb-4 ici -->
+            </div>
           </div>
         </div>
-        <!-- Fin form profil -->
-    </div>
-  </p-dialog>
+      </div>
+      <!-- Fin form profil -->
+  </div>
+</p-dialog>
   
