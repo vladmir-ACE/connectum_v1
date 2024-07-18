@@ -41,9 +41,16 @@
                                 </div>
                             </a>
                             <div class="card-body">
-                                <a href="timeline-page.html"> <h4 class="card-title"> {{item.nom}} {{item.prenom}} </h4> </a>
+                                <a href="timeline-page.html"> <h4 class="card-title"> {{item.nom}} {{item.prenom}} </h4> </a>   
                                 
-                                <button type="button" (click)="send_demande(item.email)" class="button bg-primary text-white">demande d'amitié</button>
+                                <div class="flex gap-2">
+                                    <button type="button" (click)="send_demande(item.email)" class="button bg-primary text-white">Amitié</button>
+                                   <button type="button" 
+                                   (click)="voirProfile(item)" class="button bg-secondery !w-auto">voir profil</button>
+
+                                </div>
+                                
+                                
                             </div>
                         </div>
                   
@@ -51,6 +58,7 @@
                         <!-- load more -->
                         <div class="flex justify-center my-6 lg:col-span-3 col-span-2">
                             <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Load more...</button>
+                            
                         </div>
 
                     </div>
@@ -109,7 +117,7 @@
                                 
                                 <div class="flex gap-2">
                                     <button type="button" (click)="accepter_demande(item.id)" class="button bg-primary text-white flex-1">Accepter</button>
-                                    <button type="button" class="button bg-secondery !w-auto">voir profil</button>
+                                    <button type="button" (click)="voirProfile(item.demandeur)" class="button bg-secondery !w-auto">voir profil</button>
                                 </div>
                                 
                             </div>
@@ -130,173 +138,165 @@
    
         </div>
 
-        <!-- sidebar -->
-        <div class="2xl:w-[380px] lg:w-[330px] w-full">
-
-            <div  class="lg:space-y-6 space-y-4 lg:pb-8 max-lg:grid sm:grid-cols-2 max-lg:gap-6" 
-                  uk-sticky="media: 1024; end: #js-oversized; offset: 80">
-                  
-                <div class="box p-5 px-6">
-
-                    <div class="flex items-baseline justify-between text-black dark:text-white">
-                        <h3 class="font-bold text-base"> Pages You Manage </h3>
-                        <a href="#" class="text-sm text-blue-500">See all</a>
-                    </div>
-                
-                    <div class="side-list">
-
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-2.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title">  John Michael</h4></a>
-                                <div class="side-list-info"> Updated 2 day ago </div>
-                            </div>
-                            <button class="button bg-secondery">Edit</button>
-                        </div>
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-4.jpg" alt="" class="side-list-image rounded-full"> 
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Martin Gray</h4></a>
-                                <div class="side-list-info"> Updated 4 day ago </div>
-                            </div>
-                            <button class="button bg-secondery">Edit</button>
-                        </div>  
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-3.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Monroe Parker</h4></a>
-                                <div class="side-list-info"> Updated 1 week ago </div>
-                            </div>
-                            <button class="button bg-secondery">Edit</button>
-                        </div>  
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-1.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Jesse Steeve</h4></a>
-                                <div class="side-list-info"> Updated 2 month ago </div>
-                            </div>
-                            <button class="button bg-secondery">Edit</button>
-                        </div>  
-                         
-                    </div>
-
-                </div>
-
-                <!-- Groups You Manage  -->
-                <div class="bg-white rounded-xl shadow p-5 px-6 border1 dark:bg-dark2">
-                                
-                    <div class="flex items-baseline justify-between text-black dark:text-white">
-                        <h3 class="font-bold text-base"> pages you manage </h3>
-                        <a href="#" class="text-sm text-blue-500">See all</a>
-                    </div>
-
-                    <div class="side-list">
-
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-2.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title">  John Michael</h4></a>
-                                <div class="side-list-info"> Updated 6 day ago </div>
-                            </div>
-                            <button class="button bg-primary-soft text-primary dark:text-white">Like</button>
-                        </div>
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-4.jpg" alt="" class="side-list-image rounded-full"> 
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Martin Gray</h4></a>
-                                <div class="side-list-info"> Updated 2 month ago </div>
-                            </div>
-                            <button class="button bg-primary-soft text-primary dark:text-white">Like</button>
-                        </div>  
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-3.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Monroe Parker</h4></a>
-                                <div class="side-list-info"> Updated 1 week ago </div>
-                            </div>
-                            <button class="button bg-primary-soft text-primary dark:text-white">Like</button>
-                        </div>  
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-1.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Jesse Steeve</h4></a>
-                                <div class="side-list-info"> Updated 2 day ago </div>
-                            </div>
-                            <button class="button bg-primary-soft text-primary dark:text-white">Like</button>
-                        </div>  
-                         
-                    </div>
-
-                    <button class="bg-secondery w-full text-black py-1.5 font-medium px-3.5 rounded-md text-sm mt-3 dark:text-white">See all</button>
-
-                </div>
-
-                <!-- Groups You Manage  -->
-                <div class="bg-white rounded-xl shadow p-5 px-6 border1 dark:bg-dark2">
-                                
-                    <div class="flex items-baseline justify-between text-black dark:text-white">
-                        <h3 class="font-bold text-base"> Suggested pages </h3>
-                        <a href="#" class="text-sm text-blue-500">See all</a>
-                    </div>
-
-                    <div class="side-list">
-
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-2.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title">  John Michael</h4></a>
-                                <div class="side-list-info"> Updated 1 week ago </div>
-                            </div>
-                            <button class="button bg-primary text-white">Like</button>
-                        </div>
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-4.jpg" alt="" class="side-list-image rounded-full"> 
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Martin Gray</h4></a>
-                                <div class="side-list-info"> Updated 4 week ago </div>
-                            </div>
-                            <button class="button bg-primary text-white">Like</button>
-                        </div>  
-                        <div class="side-list-item">
-                            <a href="timeline-group.html">
-                                <img src="assets/images/avatars/avatar-3.jpg" alt="" class="side-list-image rounded-full">
-                            </a>
-                            <div class="flex-1">
-                                <a href="timeline-group.html"><h4 class="side-list-title"> Monroe Parker</h4></a>
-                                <div class="side-list-info"> Updated 2 month ago </div>
-                            </div>
-                            <button class="button bg-primary text-white">Like</button>
-                        </div>  
-                       
-                         
-                    </div>
-
-                </div>
- 
-            </div> 
-
-        </div>
-
+        
     </div>
     
 </main>
+
+
+<!--  Modal Descriptif modal_descriptif-->
+<div class="hidden lg:p-20 uk- open" id="modal_descriptif" uk-modal="" *ngIf="selected_user">
+    <div class="uk-modal-dialog tt relative overflow-hidden mx-auto bg-white shadow-xl rounded-lg md:w-[520px] w-full dark:bg-dark2">
+      <div class="text-center py-4 border-b mb-0 dark:border-slate-700">
+        <h2 class="text-sm font-medium text-black"> Profile </h2>
+        <!-- close button -->
+        <button type="button" class="button-icon absolute top-0 right-0 m-2.5 uk-modal-close">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+  
+      <!-- photo de profil -->
+      <div class="flex md:gap-8 gap-4 items-center md:p-8 p-6 md:pb-4">
+        <div class="relative md:w-20 md:h-20 w-12 h-12 shrink-0">
+          <label for="file" class="cursor-pointer">
+            <img id="img" [src]="selected_user.profilePictureUrl ? selected_user.profilePictureUrl : 'assets/images/avatars/avatar-3.jpg'" class="object-cover w-full h-full rounded-full" alt="" />
+          </label>
+        </div>
+  
+        <div class="flex-1">
+          <h3 class="md:text-xl text-base font-semibold text-black dark:text-white"> {{selected_user.nom}} </h3>
+          <p class="text-sm text-blue-600 mt-1 font-normal">{{selected_user.prenom}} </p>
+        </div>
+      </div>
+      <!--Fin photo de profil -->
+  
+      <!-- form profil -->
+      <div class="flex justify-center">
+        <!-- Centrer le contenu horizontalement -->
+        <div class="w-full max-w-md">
+          <!-- Limiter la largeur pour éviter de toucher les bords -->
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <label class="w-32 text-right"> @username </label>
+              <div class="flex-1">
+                <input type="text" [(ngModel)]="selected_user.username" readonly class="w-full px-3 py-2 border rounded-lg">
+              </div>
+            </div>
+  
+            <div class="flex items-center gap-4">
+              <label class="w-32 text-right"> Email </label>
+              <div class="flex-1">
+                <input type="text" [(ngModel)]="selected_user.email" class="w-full px-3 py-2 border rounded-lg">
+              </div>
+            </div>
+  
+            <div class="flex items-start gap-4">
+              <label class="w-32 text-right"> Biographie </label>
+              <div class="flex-1">
+                <textarea class="w-full px-3 py-2 border rounded-lg" rows="5" [(ngModel)]="selected_user.experience"></textarea>
+              </div>
+            </div>
+  
+            <div class="flex items-center gap-4 mb-4">
+              <label class="w-32 text-right"> sexe </label>
+              <input type="text" [(ngModel)]="selected_user.sexe" class="w-full px-3 py-2 border rounded-lg">
+            </div>
+  
+            <div class="flex items-center gap-4 mb-8"> <!-- Ajout de mb-4 ici -->
+              <label class="w-32 text-right"> Date de naissance </label>
+              <div class="flex-1">
+                <input type="date" [(ngModel)]="selected_user.date_de_naissance" class="w-full px-3 py-2 border rounded-lg">
+              </div>
+            </div>
+            <div class="flex items-center gap-4 mb-8" > <!-- Ajout de mb-4 ici -->
+                
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin form profil -->
+    </div>
+  </div>
+  
+<!-- primngModal -->
+
+<p-dialog header="Profil" [(visible)]="showProfile" [style]="{width:'50vw'}"   *ngIf="selected_user" >
+    
+    <div class="tt relative overflow-hidden mx-auto bg-white   md:w-[1000px] w-full ">
+        <!-- photo de profil -->
+        <div class="flex md:gap-8 gap-4 items-center md:p-8 p-6 md:pb-4">
+          <div class="relative md:w-20 md:h-20 w-12 h-12 shrink-0">
+            <label for="file" class="cursor-pointer">
+              <img id="img" [src]="selected_user.profilePictureUrl ? selected_user.profilePictureUrl : 'assets/images/avatars/avatar-3.jpg'" class="object-cover w-full h-full rounded-full" alt="" />
+            </label>
+          </div>
+    
+          <div class="flex-1">
+            <p>{{selected_user.nom}}  {{selected_user.prenom}}</p>
+          </div>
+        </div>
+        <!--Fin photo de profil -->
+    
+        <!-- form profil -->
+        <div class="flex justify-center">
+          <!-- Centrer le contenu horizontalement -->
+          <div class="w-full max-w-md">
+            <!-- Limiter la largeur pour éviter de toucher les bords -->
+            <div class="space-y-6">
+             
+    
+              <div class="flex items-center gap-4">
+                <label class="w-32 text-right"> Email </label>
+                <div class="flex-1">
+                  <input type="text" [(ngModel)]="selected_user.email" class="w-full px-3 py-2 border rounded-lg" readonly>
+                </div>
+              </div>
+    
+              <div class="flex items-start gap-4">
+                <label class="w-32 text-right"> Biographie </label>
+                <div class="flex-1">
+                  <textarea class="w-full px-3 py-2 border rounded-lg" rows="5" [(ngModel)]="selected_user.experience" readonly></textarea>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <label class="md:w-32 text-right">Relation recherché </label>
+                <div class="flex pl-6 items-center gap-4 flex-1">
+                    <a role="button"                          
+                     *ngIf="selected_user.reseaux.includes('AMICAL')" [class]="selected_user.reseaux.includes('AMICAL')?'button lg:px-6 bg-green-500 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMICAL</a>
+                </div>
+                <div class="flex pl-2 items-center gap-4 flex-1">
+                    <a 
+                    role="button"
+                    *ngIf="selected_user.reseaux.includes('PROFESSIONEL')"                             
+                    [class]="selected_user.reseaux.includes('PROFESSIONEL')?'button lg:px-6 bg-yellow-500 max-md:flex-1':'button lg:px-6 bg-yellow-500 max-md:flex-1'">PROFESSIONEL</a>
+                </div>
+                <div class="flex pl-2 items-center gap-4 flex-1">
+                    <a 
+                    role="button"
+                    *ngIf="selected_user.reseaux.includes('AMOUREUSE')"                     
+                    [class]="selected_user.reseaux.includes('AMOUREUSE')?'button lg:px-6 bg-pink-600 max-md:flex-1':'button lg:px-6 bg-secondery max-md:flex-1'">AMOUREUSE</a>
+                </div>
+            </div>
+    
+              <div class="flex items-center gap-4 mb-4">
+                <label class="w-32 text-right"> sexe </label>
+                <input type="text" [(ngModel)]="selected_user.sexe" class="w-full px-3 py-2 border rounded-lg" readonly>
+              </div>
+    
+              <div class="flex items-center gap-4 mb-8"> <!-- Ajout de mb-4 ici -->
+                <label class="w-32 text-right"> Date de naissance </label>
+                <div class="flex-1">
+                  <input type="date" [(ngModel)]="selected_user.date_de_naissance" class="w-full px-3 py-2 border rounded-lg" readonly>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-8" > <!-- Ajout de mb-4 ici -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin form profil -->
+    </div>
+  </p-dialog>
+  

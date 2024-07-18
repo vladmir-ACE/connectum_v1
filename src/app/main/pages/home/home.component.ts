@@ -16,6 +16,8 @@ liste:any=[];
 listAmis:any=[];
 reseaux:any=[];
 current_rss:any;
+showProfile:boolean=false;
+selected_user:any;
 
 
 constructor(private amibService:AmiService,private pubService:PubService,private toastService:NgToastService) {};
@@ -64,5 +66,20 @@ getAmis(){
   );
 }
 
+selectUser(user:any){
+  this.selected_user=user;
+  console.log(this.selected_user);
+  this.selected_user.date_de_naissance = this.convertIsoToDate(this.selected_user.date_de_naissance);
+  this.showProfile=true;
+}
+
+
+convertIsoToDate(isoDate: string): string {
+  const date = new Date(isoDate);
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+  const day = ('0' + date.getDate()).slice(-2);
+  return `${year}-${month}-${day}`;
+}
 
 }

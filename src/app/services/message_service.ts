@@ -20,15 +20,19 @@ export class MessageService {
 
      //add 
     send(data:any){
-        return this.http.post<any>(api.url+"url",data,{headers :this.header});
+        return this.http.post<any>(api.url+"api/v1/messages",data,{headers :this.header});
     };
 
-    get_m_recus(name:string){
-        return this.http.get<any>(api.url+"url/"+name,{headers :this.header});
+    send_file(data:any){
+        return this.http.post<any>(api.url+"api/v1/messages",data,{headers :this.header});
+    };
+
+    get_m_recus(id:number){
+        return this.http.get<any>(api.url+"api/v1/messages/recue/from/"+id,{headers :this.header});
     }
 
-    get_m_send(name:string){
-        return this.http.get<any>(api.url+"api/v1/publication/getPublicationBy/"+name,{headers :this.header});
+    get_m_send(id:number){
+        return this.http.get<any>(api.url+"api/v1/messages/envoyer/to/"+id,{headers :this.header});
     }
 
 

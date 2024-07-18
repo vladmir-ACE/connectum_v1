@@ -140,7 +140,7 @@
                 <!--recievied-->
                 <div *ngIf="msg.type === 'received'" class="flex gap-3">
                   <img [src]="selected_ami.profilePictureUrl?selected_ami.profilePictureUrl:'assets/images/avatars/avatar-3.jpg'" alt="" class="w-9 h-9 rounded-full shadow">
-                  <div class="px-4 py-2 rounded-[20px] max-w-sm bg-secondery" *ngIf="msg.message!=null"> {{ msg.message }} </div>
+                  <div class="px-4 py-2 rounded-[20px] max-w-sm bg-secondery" *ngIf="msg.content!=null"> toto {{ msg.content }} </div>
                   
                   <a class="block rounded-[18px] border overflow-hidden" *ngIf="msg.file!=null" [href]="msg.file" target="_blank">
                     <div class="max-w-md">
@@ -161,8 +161,8 @@
                 <div *ngIf="msg.type === 'sent'" class="flex gap-2 flex-row-reverse items-end">
                   <img [src]="current_user.profilePictureUrl?current_user.profilePictureUrl:'assets/images/avatars/avatar-3.jpg'" alt="" class="w-5 h-5 rounded-full shadow">
                    <!--text message-->
-                  <div  *ngIf="msg.message!=null" class="px-4 py-2 rounded-[20px] max-w-sm bg-gradient-to-tr from-sky-500 to-blue-500 text-white shadow">
-                    {{ msg.message }}
+                  <div  *ngIf="msg.content!=null" class="px-4 py-2 rounded-[20px] max-w-sm bg-gradient-to-tr from-sky-500 to-blue-500 text-white shadow">
+                    {{ msg.content }}
                   </div>
                   <!--img message-->
                   <a class="block rounded-[18px] border overflow-hidden" *ngIf="msg.file!=null" [href]="msg.file" target="_blank">
@@ -181,7 +181,9 @@
                 
               </div>
 
-              <div *ngIf="file_url">
+            <!--
+            
+                <div *ngIf="file_url">
                 <div class="flex gap-2 flex-row-reverse items-end">
                   <img [src]="current_user.profilePictureUrl?current_user.profilePictureUrl:'assets/images/avatars/avatar-3.jpg'" alt="" class="w-4 h-4 rounded-full shadow">
              
@@ -201,6 +203,7 @@
 
               </div>
              
+            -->
 
             </div>
 
@@ -300,7 +303,7 @@
               <textarea [(ngModel)]="message.content" name="content" placeholder="Write your message" rows="1"
                 class="w-full resize-none bg-secondery rounded-full px-4 p-2"></textarea>
 
-              <button type="button" class="text-white shrink-0 p-2 absolute right-0.5 top-0">
+              <button type="button" (click)="sendMessage()" class="text-white shrink-0 p-2 absolute right-0.5 top-0">
                 <mat-icon>send</mat-icon>
               </button>
 

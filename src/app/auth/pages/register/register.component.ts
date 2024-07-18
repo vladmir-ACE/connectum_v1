@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth_service';
@@ -31,7 +32,7 @@ export class RegisterComponent {
     this.step=this.step==1?2:1;
   }
 
-  constructor(private authService:AuthService,private toastService:NgToastService){    
+  constructor(private authService:AuthService,private toastService:NgToastService,private router: Router){    
   }
 
   choix(type:number){
@@ -90,6 +91,7 @@ export class RegisterComponent {
     this.authService.otp(this.otp.value).subscribe(
       (resonse)=>{
         this.showOtp=false;
+        this.redirect();
         this.toastService.success({
           detail:"Inscription réussi",
           summary:"Vous pouvez vous connectez ",
@@ -105,6 +107,12 @@ export class RegisterComponent {
 
       }
     )
+  }
+
+  redirect(){
+    this.router.navigate(['/auth/login']).then(() => {
+      window.location.reload();
+    });
   }
 
 }
