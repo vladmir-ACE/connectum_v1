@@ -43,7 +43,9 @@ export class AmiService {
         return this.http.delete<any>(api.url+"api/v1/demandeAmi/supprimerAmi/"+email,{headers :this.header});
     }
 
-    
+    searchAmi(name:string){
+        return this.http.get<any>(api.url+"avis/rechercheUtilisateur/"+name,{headers :this.header});
+    }
 
     
 

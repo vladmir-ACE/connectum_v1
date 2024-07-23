@@ -42,6 +42,22 @@ export class PubService {
     // changeMdp(data:any){
     //     return this.http.post<any>(api.url+"nouveau-mot-de-passe",data,{headers :this.header});
     // }
+
+    addComm(pub_id:number,data:any){
+        return  this.http.post<any>(api.url+"api/v1/commentaires/"+pub_id ,data,{headers :this.header});
+    }
+
+    delCom(pub_id:number){
+        return  this.http.delete<any>(api.url+"api/v1/commentaires/"+pub_id,{headers :this.header});
+    }
+
+    addLike(pub_id:number,data:any){
+        return  this.http.post<any>(api.url+"api/v1/likes/publications/"+pub_id+"/like",data,{headers :this.header});
+    }
+
+    dislike(pub_id:number){
+        return  this.http.delete<any>(api.url+"api/v1/likes/publications/"+pub_id+"/like",{headers :this.header});
+    }
     
 
 }

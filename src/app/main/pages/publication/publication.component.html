@@ -169,7 +169,7 @@
 
           <!-- post heading -->
           <div class="flex gap-3 sm:p-4 p-2.5 text-sm font-medium">
-      <a > <img [src]="item.utilisateur.profilePictureUrl?item.utilisateur.profilePictureUrl:'assets/images/avatars/avatar-3.jpg'" alt="" class="w-9 h-9 rounded-full">
+          <a > <img [src]="item.utilisateur.profilePictureUrl?item.utilisateur.profilePictureUrl:'assets/images/avatars/avatar-3.jpg'" alt="" class="w-9 h-9 rounded-full">
           </a>
           <div class="flex-1">
               <a >
@@ -201,6 +201,7 @@
               </nav>
               </div>
           </div>
+
           </div>
 
           <!--text -->
@@ -226,18 +227,15 @@
               <button type="button" class="button-icon text-red-500 bg-red-100 dark:bg-slate-700">
                   <mat-icon>mood</mat-icon>
               </button>
-              <a href="#">1,300</a>
+              <a href="#">{{item.likes.length}}</a>
               </div>
               <div class="p-1 px-2 bg-white rounded-full drop-shadow-md w-[212px] dark:bg-slate-700 text-2xl"
               uk-drop="offset:10;pos: top-left; animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left">
 
               <div class="flex gap-2"
                   uk-scrollspy="target: > button; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
-                  <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 👍 </span></button>
-                  <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> ❤️ </span></button>
-                  <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😂 </span></button>
-                  <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😯 </span></button>
-                  <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😢 </span></button>
+                  <button type="button" class="text-red-600 hover:scale-125 duration-300" > <span> 👍 </span></button>
+                  <button type="button" class="text-red-600 hover:scale-125 duration-300"  > <span> 👎 </span></button>
               </div>
 
               <div class="w-2.5 h-2.5 absolute -bottom-1 left-3 bg-white rotate-45 hidden"></div>
@@ -247,7 +245,7 @@
               <button type="button" class="button-icon bg-slate-200/70 dark:bg-slate-700">
               <mat-icon >chat</mat-icon>
               </button>
-              <span>260</span>
+              <span>{{item.commentaires.length}}</span>
           </div>
           <button type="button" class="button-icon ml-auto">
               <mat-icon class="text-xl" name="paper-plane-outline"></mat-icon>
@@ -351,7 +349,7 @@
 
         <!-- Boutons suivant et précédant avec espacement -->
         <div class="col-span-2  flex justify-center space-x-8 pt-6">
-          <button (click)="changeStep()" class="button bg-primary text-white w-100 max-w-xs mx-auto">
+          <button (click)="changeStep()" class="button bg-black text-white w-100 max-w-xs mx-auto">
             suivant
             <span class="flex justify-center items-center">
               <mat-icon>arrow_forward</mat-icon>
@@ -382,29 +380,14 @@
             <input #fileInput  type="file" class="hidden" (change)="onFileSelected($event)" hidden />
           </button>
           
-          <button type="button"
-            class="flex items-center gap-1.5 bg-teal-50 text-teal-600 rounded-full py-1 px-2 border-2 border-teal-100 dark:bg-teal-950 dark:border-teal-900">
-            <mat-icon>videocam</mat-icon>
-            Video
-          </button>
-          <button type="button"
-            class="flex items-center gap-1.5 bg-orange-50 text-orange-600 rounded-full py-1 px-2 border-2 border-orange-100 dark:bg-yellow-950 dark:border-yellow-900">
-            <mat-icon>mood</mat-icon>
-            Feeling
-          </button>
-          <button type="button"
-            class="flex items-center gap-1.5 bg-red-50 text-red-600 rounded-full py-1 px-2 border-2 border-rose-100 dark:bg-rose-950 dark:border-rose-900">
-            <mat-icon>location_on</mat-icon>
-            Check in
-          </button>
-          <button type="button" class="grid place-items-center w-8 h-8 text-xl rounded-full bg-secondery">
-            <mat-icon>more_horiz</mat-icon> <!-- Pour une icône horizontale -->
-          </button>
+        
+   
+          
         </div>
 
         <div class="p-5 flex justify-between items-center">
           <div>
-            <button (click)="changeStep()" class="button bg-primary text-white w-100 max-w-xs mx-auto">
+            <button (click)="changeStep()" class="button bg-black text-white w-100 max-w-xs mx-auto">
               <span class="flex justify-center items-center">
                 <mat-icon>arrow_back</mat-icon>
               </span>
@@ -412,53 +395,11 @@
             </button>
           </div>
           <div>
-            <button
-              class="inline-flex items-center py-1 px-2.5 gap-1 font-medium text-sm rounded-full bg-slate-50 border-2 border-slate-100 group aria-expanded:bg-slate-100 aria-expanded: dark:text-white dark:bg-slate-700 dark:border-slate-600"
-              type="button">
-              Everyone
-              <mat-icon class="text-base duration-500 group-aria-expanded:rotate-180">expand_more</mat-icon>
-            </button>
-
-            <div
-              class="p-2 bg-white rounded-lg shadow-lg text-black font-medium border border-slate-100 w-60 dark:bg-slate-700"
-              uk-drop="offset:10;pos: bottom-left; reveal-left;animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left ; mode:click">
-
-              <form>
-                <label>
-                  <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" checked />
-                  <div
-                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                    <div class="text-sm"> Everyone </div>
-                    <mat-icon name="checkmark-circle"
-                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                    </mat-icon>
-                  </div>
-                </label>
-                <label>
-                  <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" />
-                  <div
-                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                    <div class="text-sm"> Friends </div>
-                    <mat-icon name="checkmark-circle"
-                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                    </mat-icon>
-                  </div>
-                </label>
-                <label>
-                  <input type="radio" name="radio-status" id="monthly" class="peer appearance-none hidden" />
-                  <div
-                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                    <div class="text-sm"> Only me </div>
-                    <mat-icon name="checkmark-circle"
-                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                    </mat-icon>
-                  </div>
-                </label>
-              </form>
-            </div>
+            
+            
           </div>
           <div class="flex items-center gap-2">
-            <a role="button" (click)="addPub()" class="button bg-blue-500 text-white py-2 px-12 text-[14px]"> Publier</a>
+            <a role="button" (click)="addPub()" class="button bg-primary text-white py-2 px-12 text-[14px]"> Publier</a>
           </div>
         </div>
        
@@ -527,7 +468,7 @@
 
         <!-- Boutons suivant et précédant avec espacement -->
         <div class="col-span-2 flex justify-center space-x-8 pt-6">
-          <button (click)="changeStep()" class="button bg-primary text-white w-100 max-w-xs mx-auto">
+          <button (click)="changeStep()" class="button bg-black text-white w-100 max-w-xs mx-auto">
             suivant
             <span class="flex justify-center items-center">
               <mat-icon>arrow_forward</mat-icon>
@@ -558,29 +499,12 @@
             <input #fileInput  type="file" class="hidden" (change)="onFileSelected($event)" hidden />
           </button>
           
-          <button type="button"
-            class="flex items-center gap-1.5 bg-teal-50 text-teal-600 rounded-full py-1 px-2 border-2 border-teal-100 dark:bg-teal-950 dark:border-teal-900">
-            <mat-icon>videocam</mat-icon>
-            Video
-          </button>
-          <button type="button"
-            class="flex items-center gap-1.5 bg-orange-50 text-orange-600 rounded-full py-1 px-2 border-2 border-orange-100 dark:bg-yellow-950 dark:border-yellow-900">
-            <mat-icon>mood</mat-icon>
-            Feeling
-          </button>
-          <button type="button"
-            class="flex items-center gap-1.5 bg-red-50 text-red-600 rounded-full py-1 px-2 border-2 border-rose-100 dark:bg-rose-950 dark:border-rose-900">
-            <mat-icon>location_on</mat-icon>
-            Check in
-          </button>
-          <button type="button" class="grid place-items-center w-8 h-8 text-xl rounded-full bg-secondery">
-            <mat-icon>more_horiz</mat-icon> <!-- Pour une icône horizontale -->
-          </button>
+          
         </div>
 
         <div class="p-5 flex justify-between items-center">
           <div>
-            <button (click)="changeStep()" class="button bg-primary text-white w-100 max-w-xs mx-auto">
+            <button (click)="changeStep()" class="button bg-black text-white w-100 max-w-xs mx-auto">
               <span class="flex justify-center items-center">
                 <mat-icon>arrow_back</mat-icon>
               </span>
@@ -588,53 +512,11 @@
             </button>
           </div>
           <div>
-            <button
-              class="inline-flex items-center py-1 px-2.5 gap-1 font-medium text-sm rounded-full bg-slate-50 border-2 border-slate-100 group aria-expanded:bg-slate-100 aria-expanded: dark:text-white dark:bg-slate-700 dark:border-slate-600"
-              type="button">
-              Everyone
-              <mat-icon class="text-base duration-500 group-aria-expanded:rotate-180">expand_more</mat-icon>
-            </button>
+            
 
-            <div
-              class="p-2 bg-white rounded-lg shadow-lg text-black font-medium border border-slate-100 w-60 dark:bg-slate-700"
-              uk-drop="offset:10;pos: bottom-left; reveal-left;animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left ; mode:click">
-
-              <form>
-                <label>
-                  <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" checked />
-                  <div
-                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                    <div class="text-sm"> Everyone </div>
-                    <mat-icon name="checkmark-circle"
-                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                    </mat-icon>
-                  </div>
-                </label>
-                <label>
-                  <input type="radio" name="radio-status" id="monthly1" class="peer appearance-none hidden" />
-                  <div
-                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                    <div class="text-sm"> Friends </div>
-                    <mat-icon name="checkmark-circle"
-                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                    </mat-icon>
-                  </div>
-                </label>
-                <label>
-                  <input type="radio" name="radio-status" id="monthly" class="peer appearance-none hidden" />
-                  <div
-                    class=" relative flex items-center justify-between cursor-pointer rounded-md p-2 px-3 hover:bg-secondery peer-checked:[&_.active]:block dark:bg-dark3">
-                    <div class="text-sm"> Only me </div>
-                    <mat-icon name="checkmark-circle"
-                      class="hidden active absolute -translate-y-1/2 right-2 text-2xl text-blue-600 uk-animation-scale-up">
-                    </mat-icon>
-                  </div>
-                </label>
-              </form>
-            </div>
           </div>
           <div class="flex items-center gap-2">
-            <a role="button" (click)="update()" class="button bg-blue-500 text-white py-2 px-12 text-[14px]"> Modifier</a>
+            <a role="button" (click)="update()" class="button bg-primary text-white py-2 px-12 text-[14px]"> Modifier</a>
           </div>
         </div>
       </div>

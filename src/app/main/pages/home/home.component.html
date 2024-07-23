@@ -204,21 +204,19 @@
                     <div class="sm:p-4 p-2.5 flex items-center gap-4 text-xs font-semibold">
                     <div>
                         <div class="flex items-center gap-2.5">
-                        <button type="button" class="button-icon text-red-500 bg-red-100 dark:bg-slate-700">
+                        <button type="button" class="button-icon text-blue-500 bg-blue-100 dark:bg-slate-700">
                             <mat-icon>mood</mat-icon>
                         </button>
-                        <a href="#">1,300</a>
+                        <a href="#">{{item.likes.length}}</a>
                         </div>
                         <div class="p-1 px-2 bg-white rounded-full drop-shadow-md w-[212px] dark:bg-slate-700 text-2xl"
                         uk-drop="offset:10;pos: top-left; animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left">
         
                         <div class="flex gap-2"
                             uk-scrollspy="target: > button; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
-                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 👍 </span></button>
-                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> ❤️ </span></button>
-                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😂 </span></button>
-                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😯 </span></button>
-                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😢 </span></button>
+                            <button type="button" class="text-red-600 hover:scale-125 duration-300" (click)="addLike(item.id)"> <span> 👍 </span></button>
+                            <button type="button" class="text-red-600 hover:scale-125 duration-300" (click)="dislike(item.id)" > <span> 👎 </span></button>
+                           
                         </div>
         
                         <div class="w-2.5 h-2.5 absolute -bottom-1 left-3 bg-white rotate-45 hidden"></div>
@@ -228,7 +226,7 @@
                         <button type="button" class="button-icon bg-slate-200/70 dark:bg-slate-700">
                         <mat-icon>chat</mat-icon>
                         </button>
-                        <span>260</span>
+                        <span>{{item.commentaires.length}}</span>
                     </div>
                     <button type="button" class="button-icon ml-auto">
                         <mat-icon class="text-xl" name="paper-plane-outline"></mat-icon>
@@ -237,10 +235,54 @@
                         <mat-icon class="text-xl" name="share-outline"></mat-icon>
                     </button>
                     </div>
-        
-                   
-        
-                    
+
+
+                      <!-- comments -->
+                    <div     style="max-height: 200px; overflow-y: auto;"   class="sm:p-4 p-2.5 border-t border-gray-100 font-normal space-y-3 relative dark:border-slate-700/40"> 
+                      
+                        <div  *ngFor="let com of item.commentaires" class="flex items-start gap-3 relative">
+                          <a role="button" (click)="selectUser(com.utilisateur)"
+                          > <img [src]="com.utilisateur.profilePictureUrl?com.utilisateur.profilePictureUrl:'assets/images/avatars/avatar-3.jpg'" alt="" class="w-6 h-6 mt-1 rounded-full">
+                              </a>                           
+                            <div class="flex-1">
+                                <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> {{com.utilisateur.nom}} </a>
+                                <p class="mt-0.5">{{com.content}} </p>
+                            </div>
+
+                            <div class="-mr-1" *ngIf="current_user.email==com.utilisateur.email">
+                              <button type="button" class="button-icon w-8 h-8">
+                              <span class="material-icons text-xl">more_horiz</span>
+                              </button>
+                              <div class="w-[245px]"
+                              uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click">
+                              <nav>
+                                  <a 
+                                  role="button"    
+                                  (click)="deleteCom(com.id)"                
+                                  >                   
+                                  <mat-icon style="background-color: red;"> delete</mat-icon> suprimer
+                                  </a>
+                                  
+                              </nav>
+                              </div>
+                          </div>
+                        </div>
+                        
+                
+
+                    </div>
+
+                    <!-- add comment -->
+                    <div class="sm:px-4 sm:py-3 p-2.5 border-t border-gray-100 flex items-center gap-1 dark:border-slate-700/40">
+                        
+                        <img [src]="current_user.profilePictureUrl?current_user.profilePictureUrl:'assets/images/avatars/avatar-3.jpg'" alt="" class="w-6 h-6 rounded-full">
+                        
+                        <div class="flex-1 relative overflow-hidden h-10">
+                            <textarea  [(ngModel)]="comment.content" placeholder="Ajouter un commentaire .." rows="1" class="w-full resize-none !bg-transparent px-4 py-2 focus:!border-transparent focus:!ring-transparent"></textarea>
+                        </div>
+                        <button type="submit" (click)="addCommentaire(item.id)" class="text-sm rounded-full py-1.5 px-3.5 bg-secondery"> <mat-icon> send</mat-icon></button>
+                    </div> 
+         
                 </div>
 
                 

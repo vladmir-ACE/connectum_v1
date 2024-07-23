@@ -55,7 +55,7 @@
               <!-- search -->
               <div class="relative mt-4">
                 <div class="absolute left-3 bottom-1/2 translate-y-1/2 flex"></div>
-                <input type="text" placeholder="Search" class="w-full !pl-10 !py-2 !rounded-lg">
+                <input type="text" placeholder="" class="w-full !pl-10 !py-2 !rounded-lg">
               </div>
 
             </div>
@@ -130,7 +130,7 @@
               <div class="mt-3.5">
                 <a role="button"
                   (click)="voirProfile()"
-                  class="inline-block rounded-lg px-4 py-1.5 text-sm font-semibold bg-secondery">View profile</a>
+                  class="inline-block rounded-lg px-4 py-1.5 text-sm font-semibold bg-secondery">profile</a>
               </div>
             </div>
 
@@ -303,7 +303,7 @@
               <textarea [(ngModel)]="message.content" name="content" placeholder="Write your message" rows="1"
                 class="w-full resize-none bg-secondery rounded-full px-4 p-2"></textarea>
 
-              <button type="button" (click)="sendMessage()" class="text-white shrink-0 p-2 absolute right-0.5 top-0">
+              <button type="button" (click)="sendMessage()" class="text-black shrink-0 p-2 absolute right-0.5 top-0">
                 <mat-icon>send</mat-icon>
               </button>
 
