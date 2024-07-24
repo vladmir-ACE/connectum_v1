@@ -1,4 +1,5 @@
 export const api={
-    url: "http://127.0.0.1:8080/"
+    url: "https://connectum-back.onrender.com/"
+    //"http://127.0.0.1:8080/"
 } 
 
